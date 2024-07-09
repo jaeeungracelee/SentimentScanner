@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css'; // Import the CSS file
+import './App.css'; // import the CSS file
 
 function App() {
   const [keyword, setKeyword] = useState('');
