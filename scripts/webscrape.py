@@ -34,12 +34,12 @@ for post in top_posts:
     print(f"Created: {post.created}")
     print(f"Body: {post.selftext}\n")
 
-import tweepy
+# import tweepy
 
-# Set up Twitter API
-auth = tweepy.OAuth1UserHandler(twitter_api_key, twitter_api_secret, twitter_access_token, twitter_access_secret)
-twitter_api = tweepy.API(auth)
+# # twitter API
+# auth = tweepy.OAuth1UserHandler(twitter_api_key, twitter_api_secret, twitter_access_token, twitter_access_secret)
+# twitter_api = tweepy.API(auth)
 
-def fetch_tweets(keyword):
-    tweets = twitter_api.search(q=keyword, count=100, lang='en', tweet_mode='extended')
-    return [tweet.full_text for tweet in tweets]
+# def fetch_tweets(keyword):
+#     tweets = twitter_api.search(q=keyword, count=100, lang='en', tweet_mode='extended')
+#     return [tweet.full_text for tweet in tweets]
