@@ -208,8 +208,7 @@ const SwirlBackground = () => {
 
     window.addEventListener('load', setup);
     window.addEventListener('resize', resize);
-
-    // Clean up on unmount
+    
     return () => {
       window.removeEventListener('load', setup);
       window.removeEventListener('resize', resize);
