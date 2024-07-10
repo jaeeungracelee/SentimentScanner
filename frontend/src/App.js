@@ -26,7 +26,7 @@ function App() {
     <div className="App">
     <SwirlBackground />
     <header className="App-header">
-      <h1>SentimentScan</h1>
+      <h1>SentimentScanner</h1>
       <form onSubmit={handleSubmit} className="input-form">
         <input 
           type="text" 
