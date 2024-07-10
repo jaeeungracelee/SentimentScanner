@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css'; // import the CSS file
+import SwirlBackground from './SwirlBackground';
+import './App.css'; 
 
 function App() {
   const [keyword, setKeyword] = useState('');
@@ -23,18 +24,22 @@ function App() {
 
   return (
     <div className="App">
+    <SwirlBackground />
+    <header className="App-header">
       <h1>Sentiment Analysis</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="input-form">
         <input 
           type="text" 
           value={keyword} 
           onChange={handleInputChange} 
           placeholder="Enter keyword" 
+          className="input-box"
         />
-        <button type="submit">Analyze</button>
+        <button type="submit" className="submit-button">Analyze</button>
       </form>
       <div className="results" dangerouslySetInnerHTML={{ __html: results }} />
-    </div>
+    </header>
+  </div>
   );
 }
 
