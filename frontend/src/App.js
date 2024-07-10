@@ -32,7 +32,7 @@ function App() {
           type="text" 
           value={keyword} 
           onChange={handleInputChange} 
-          placeholder="Enter keyword" 
+          placeholder="Enter Text Here" 
           className="input-box"
         />
         <button type="submit" className="submit-button">Analyze</button>
