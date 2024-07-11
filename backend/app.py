@@ -92,17 +92,27 @@ def analyze_sentiment(texts):
 def analyze():
     data = request.get_json()
     keyword = data['keyword']
-    # tweets = fetch_tweets(keyword)
-    reddit_posts = fetch_reddit_posts(keyword)
-    # tweet_sentiments = analyze_sentiment(tweets)
-    reddit_post_sentiments = analyze_sentiment(reddit_posts)
+    ## ML
+    # Load the CountVectorizer from the file
+    with open('count_vectorizer.pkl', 'rb') as file:
+        loaded_vectorizer = pickle.load(file)
 
-    # tweet_df = pd.DataFrame(tweet_sentiments)
-    reddit_df = pd.DataFrame(reddit_post_sentiments)
+    vec_keyword = loaded_vectorizer.transform([keyword])
+    vec_keyword = vec_keyword.toarray()
 
+    # Load the rf trained model 
+    
+    joblib_file = "random_forest_model_69_acc.pkl"
+    loaded_model = joblib.load(joblib_file)
+
+    # Use the loaded model to make predictions
+    predictions = loaded_model.predict(vec_keyword)
+    print(predictions)
+
+    # return predictions
     return jsonify({
         # 'tweet_df': tweet_df.to_html(),
-        'reddit_df': reddit_df.to_html()
+        'reddit_df': predictions[0]
     })
 
 if __name__ == '__main__':
