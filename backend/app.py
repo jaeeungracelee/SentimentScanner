@@ -7,6 +7,9 @@ import os
 from dotenv import load_dotenv, find_dotenv
 import nltk
 import ssl
+import pickle
+import joblib
+import numpy as np
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
@@ -94,26 +97,31 @@ def analyze():
     keyword = data['keyword']
     ## ML
     # Load the CountVectorizer from the file
-    with open('count_vectorizer.pkl', 'rb') as file:
-        loaded_vectorizer = pickle.load(file)
+    try:
+        with open('count_vectorizer.pkl', 'rb') as file:
+            loaded_vectorizer = pickle.load(file)
 
-    vec_keyword = loaded_vectorizer.transform([keyword])
-    vec_keyword = vec_keyword.toarray()
+        vec_keyword = loaded_vectorizer.transform([keyword])
+        vec_keyword = vec_keyword.toarray()
 
-    # Load the rf trained model 
-    
-    joblib_file = "random_forest_model_69_acc.pkl"
-    loaded_model = joblib.load(joblib_file)
+        # Load the rf trained model 
+        
+        joblib_file = "random_forest_model_69_acc.pkl"
+        loaded_model = joblib.load(joblib_file)
 
-    # Use the loaded model to make predictions
-    predictions = loaded_model.predict(vec_keyword)
-    print(predictions)
+        # Use the loaded model to make predictions
+        predictions = loaded_model.predict(vec_keyword)
+        print(predictions)
 
-    # return predictions
-    return jsonify({
-        # 'tweet_df': tweet_df.to_html(),
-        'reddit_df': predictions[0]
-    })
+        # return predictions
+        return jsonify({
+            # 'tweet_df': tweet_df.to_html(),
+            'reddit_df': predictions[0].tolist()
+        })
+    except FileNotFoundError as e:
+        return jsonify({'error': f"File not found: {str(e)}"}), 500
+    except Exception as e:
+        return jsonify({'error': f"An error occurred: {str(e)}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
