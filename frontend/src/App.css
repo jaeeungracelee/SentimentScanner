@@ -33,9 +33,17 @@ h1 {
   border-radius: 5px;
   border: none;
   margin-right: 10px;
-  width: 80%; 
-  margin-bottom: 30px; 
+  width: 100%; 
+  margin-bottom: 30px;
+  resize: both; /*allows vertical resizing of text area */
+  overflow: hidden; /*hide overflow for auto-expansion */
+  /*min-height: 60px; /*set min height for text area*/
 }
+
+/*automatically expand the textarea as the user types ...does not work*/
+/*.input-box:focus {
+  height: auto;
+}*/
 
 .submit-button {
   padding: 20px;
