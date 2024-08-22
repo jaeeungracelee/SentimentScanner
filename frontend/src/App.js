@@ -28,12 +28,12 @@ function App() {
     <header className="App-header">
       <h1>SentimentScanner</h1>
       <form onSubmit={handleSubmit} className="input-form">
-        <input 
-          type="text" 
-          value={keyword} 
-          onChange={handleInputChange} 
-          placeholder="Enter Text Here" 
+        <textarea
+          value={keyword}
+          onChange={handleInputChange}
+          placeholder="Enter Text Here"
           className="input-box"
+          rows="1" // Set an initial number of rows
         />
         <button type="submit" className="submit-button">Analyze</button>
       </form>
