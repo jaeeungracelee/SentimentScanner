@@ -28,13 +28,17 @@ function App() {
     <header className="App-header">
       <h1>SentimentScanner</h1>
       <form onSubmit={handleSubmit} className="input-form">
-        <textarea
-          value={keyword}
-          onChange={handleInputChange}
-          placeholder="Enter Text Here"
-          className="input-box"
-          rows="1" // Set an initial number of rows
-        />
+      <textarea
+        value={keyword}
+        onChange={handleInputChange}
+        placeholder="Enter Text Here"
+        className="input-box"
+        rows="1" // Set an initial number of rows
+        onInput={(e) => {
+          e.target.style.height = 'auto'; // Reset the height
+          e.target.style.height = `${e.target.scrollHeight}px`; // Set height to scroll height
+        }}
+      />
         <button type="submit" className="submit-button">Analyze</button>
       </form>
       <div className="results" dangerouslySetInnerHTML={{ __html: results }} />

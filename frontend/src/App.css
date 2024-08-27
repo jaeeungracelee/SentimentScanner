@@ -35,10 +35,11 @@ h1 {
   margin-right: 10px;
   width: 100%; 
   margin-bottom: 30px;
-  resize: both; /*allows vertical resizing of text area */
-  overflow: hidden; /*hide overflow for auto-expansion */
-  /*min-height: 60px; /*set min height for text area*/
+  resize: none; /* Disable manual resizing to avoid conflict */
+  overflow: hidden; /* Hide overflow for auto-expansion */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
+
 
 /*automatically expand the textarea as the user types ...does not work*/
 /*.input-box:focus {

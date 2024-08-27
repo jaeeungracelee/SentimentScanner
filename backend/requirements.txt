@@ -1,0 +1,8 @@
+Flask
+flask-cors
+tweepy
+praw
+python-dotenv
+nltk
+pandas
+joblib
