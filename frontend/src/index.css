@@ -1,12 +1,12 @@
 body {
   margin: 0;
-  font-family: 'Poppins';
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
 }
 
 h1 {
-  font-family: 'Poppins';
+  font-family: 'Montserrat', sans-serif;
   color: white;
 }
