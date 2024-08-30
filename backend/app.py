@@ -116,7 +116,7 @@ def analyze():
         # return predictions
         return jsonify({
             # 'tweet_df': tweet_df.to_html(),
-            'reddit_df': predictions[0].tolist()
+            'reddit_df': predictions[0]
         })
     except FileNotFoundError as e:
         return jsonify({'error': f"File not found: {str(e)}"}), 500
