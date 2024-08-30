@@ -20,8 +20,8 @@ app = Flask(__name__)
 CORS(app)
 
 # load environment variables from .env file in the root directory
-env_path = find_dotenv()
-load_dotenv(dotenv_path=env_path)
+# env_path = find_dotenv()
+# load_dotenv(dotenv_path=env_path)
 
 # twitter API credentials
 # twitter_api_key = os.getenv('TWITTER_API_KEY')
@@ -30,20 +30,20 @@ load_dotenv(dotenv_path=env_path)
 # twitter_access_secret = os.getenv('TWITTER_ACCESS_SECRET')
 
 # reddit API credentials
-reddit_client_id = os.getenv('REDDIT_CLIENT_ID')
-reddit_client_secret = os.getenv('REDDIT_CLIENT_SECRET')
-reddit_user_agent = os.getenv('REDDIT_USER_AGENT')
+# reddit_client_id = os.getenv('REDDIT_CLIENT_ID')
+# reddit_client_secret = os.getenv('REDDIT_CLIENT_SECRET')
+# reddit_user_agent = os.getenv('REDDIT_USER_AGENT')
 
 # set up Twitter API
 # auth = tweepy.OAuth1UserHandler(twitter_api_key, twitter_api_secret, twitter_access_token, twitter_access_secret)
 # twitter_api = tweepy.API(auth)
 
 # set up Reddit API
-reddit = praw.Reddit(
-    client_id=reddit_client_id,
-    client_secret=reddit_client_secret,
-    user_agent=reddit_user_agent
-)
+# reddit = praw.Reddit(
+#     client_id=reddit_client_id,
+#     client_secret=reddit_client_secret,
+#     user_agent=reddit_user_agent
+# )
 
 # disable SSL verification for NLTK downloads 
 # please work... 
@@ -84,12 +84,12 @@ def preprocess_text(text):
 #     tweets = twitter_api.search_tweets(q=keyword, count=100, lang='en', tweet_mode='extended')
 #     return [tweet.full_text for tweet in tweets]
 
-def fetch_reddit_posts(keyword):
-    posts = reddit.subreddit('all').search(keyword, limit=100)
-    return [post.title + ' ' + post.selftext for post in posts]
+# def fetch_reddit_posts(keyword):
+#     posts = reddit.subreddit('all').search(keyword, limit=100)
+#     return [post.title + ' ' + post.selftext for post in posts]
 
-def analyze_sentiment(texts):
-    return [sid.polarity_scores(preprocess_text(text)) for text in texts]
+# def analyze_sentiment(texts):
+#     return [sid.polarity_scores(preprocess_text(text)) for text in texts]
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
