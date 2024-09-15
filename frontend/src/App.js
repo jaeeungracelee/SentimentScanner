@@ -13,7 +13,7 @@ function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://127.0.0.1:5000/analyze', { keyword })
+    axios.post('https://sentimentscanner-c0bbd127ef8e.herokuapp.com/analyze', { keyword })
       .then(response => {
         setResults(response.data.reddit_df);
       })
